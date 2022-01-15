@@ -1,2 +1,2 @@
 # SRM-Bulletin
-Project for SRM.
+Project for SRM Students.
