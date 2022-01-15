@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../GitHub/BlogApp-Project/Blog_Project/.idea/Blog_Project.iml" filepath="$PROJECT_DIR$/../GitHub/BlogApp-Project/Blog_Project/.idea/Blog_Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SRM-Bulletin.iml" filepath="$PROJECT_DIR$/.idea/SRM-Bulletin.iml" />
+    </modules>
+  </component>
+</project>
