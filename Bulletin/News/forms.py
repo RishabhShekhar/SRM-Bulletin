@@ -2,14 +2,18 @@ from django import forms
 from News.models import Post,Comment
 
 class PostForm(forms.ModelForm):
+    docfile = forms.FileField(
+        label='Select a file',
+        help_text='Max-size : 42 Mb',
+    )
 
     class Meta():
         model=Post
-        fields=('author','title','text')
+        fields=('author','title','text','docfile')
 
         widgets={
             'title':forms.TextInput(attrs={'class':'textinputclass'}),
-            'text':forms.Textarea(attrs={'class':'editable medium-editor-textarea postcontent'})
+            'text':forms.Textarea(attrs={'class':'editable medium-editor-textarea postcontent'}),
         }
 
 
