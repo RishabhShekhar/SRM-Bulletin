@@ -5,6 +5,7 @@ class PostForm(forms.ModelForm):
     docfile = forms.FileField(
         label='Select a file',
         help_text='Max-size : 42 Mb',
+        required= False,
     )
 
     class Meta():
