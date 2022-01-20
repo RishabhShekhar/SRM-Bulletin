@@ -13,7 +13,7 @@
   <p class='postcontent'>{{ post.text|safe|linebreaksbr }}</p>
     <p class='postcontent'>
     {% if post.docfile %}
-        <a href="{{ post.docfile.url }}">{{ post.docfile.name }}</a></li>
+        <a href="{{ post.docfile.url }}" target="_blank">{{ post.docfile.name }}</a></li>
     {% endif %}
     </p>
 
