@@ -10,7 +10,7 @@ class PostForm(forms.ModelForm):
 
     class Meta():
         model=Post
-        fields=('title','text','docfile')
+        fields=('author','title','text','docfile')
 
         widgets={
             'title':forms.TextInput(attrs={'class':'textinputclass'}),
