@@ -10,7 +10,7 @@ class PostForm(forms.ModelForm):
 
     class Meta():
         model=Post
-        fields=('author','title','text','docfile')
+        fields=('title','text','docfile')
 
         widgets={
             'title':forms.TextInput(attrs={'class':'textinputclass'}),
@@ -22,7 +22,7 @@ class CommentForm(forms.ModelForm):
 
     class Meta():
         model=Comment
-        fields = ('author','text')
+        fields = ('text',)
 
     widgets={
         'author':forms.TextInput(attrs={'class':'textinputclass'}),
