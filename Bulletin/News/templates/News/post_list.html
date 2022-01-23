@@ -11,6 +11,7 @@
       <p class="card-text">
         <p style="margin-bottom:-1px ;">Published on: {{ post.published_date|date:"d M Y" }}</p>
         <p>Comments: {{post.approve_comments.count}}</p>
+        <p>Posted by: {{ post.author }}</p>
       </p>
       <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary backCo">Read More</a>
     </div>
