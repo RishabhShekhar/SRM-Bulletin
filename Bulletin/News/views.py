@@ -46,11 +46,11 @@ class PostDeleteView(DeleteView, LoginRequiredMixin):
     success_url = reverse_lazy('post_list')
 
 
-class DraftListView(LoginRequiredMixin, ListView):
+class DraftListView(ListView, LoginRequiredMixin):
     login_url = '/login/'
     redirect_field_name = 'News/post_list.html'
     model = Post
-    template_name = 'News/post_draft_list.html'
+    template_name = 'News/draft_list.html'
 
     def get_queryset(self):
         return Post.objects.filter(published_date__isnull=True).order_by('create_date')
