@@ -35,13 +35,7 @@
 
 /* COLOUR CHANGER BELOW */
 
-.loader {
-  filter: hue-rotate(0deg);
-  color: linear-gradient(45deg, #0f8, #08f);
-  animation: hue 5000ms infinite linear;
-}
-
-@keyframes spinify {
+/* @keyframes spinify {
   0% {
     transform: translate(0px, 0px);
   }
@@ -69,20 +63,19 @@
   100% {
     filter: hue-rotate(360deg);
   }
-}
+} */
 
 * {
   transition: all 500ms ease-out;
   -webkit-transition: all 500ms ease-out;
 }
 
-
 .new1 {
- position: fixed;
- z-index: 1;
+  position: fixed;
+  z-index: 1;
 }
 
- /*#fff */
+/*#fff */
 .icon {
   color: black;
   font-size: 32px;
@@ -105,7 +98,7 @@
   width: 10%;
   padding: 0;
   text-align: center;
- }
+}
 
 .new1 li {
   margin: 30px 0;
@@ -116,10 +109,40 @@ a {
   font-family: open sans, sans-serif;
 }
 
+body {
+  background-image: linear-gradient(to top, #6fa8b1 0%, #f3d83d 100%);
+  /* height: 100%; */
+  /* margin: 0; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.test {
+  background-color: #e7e5f8;
+  box-shadow: darkred;
+  border-radius: 25px;
+  padding: 1rem;
+  border-color: rgb(28, 5, 71);
+  border: 2px solid #e2e8ec;
+  color: #1a1a40;
+}
 
+.test h6 {
+  margin-bottom: 0;
+}
+.backCo {
+  background-color: rgb(8, 58, 116);
+  color: #e2e8ec;
+}
 
+.load {
+  background: none;
+  /* filter: hue-rotate(0deg); */
+  /* color: linear-gradient(45deg, #0f8, #08f);
+  animation: hue 5000ms infinite linear; */
+}
 
-
-
-
-
+.loader {
+  /* filter: hue-rotate(0deg); */
+  /* color: linear-gradient(45deg, #0f8, #08f);
+  animation: hue 5000ms infinite linear; */
+}

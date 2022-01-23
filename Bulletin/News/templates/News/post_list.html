@@ -2,13 +2,18 @@
 {% block content %}
 <div class="centerstage">
   {% for post in post_list %}
-  <div class="loader">
-    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-      <p class='postcontent'>{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</p>
-      <div class="date">
-        <p>Published on: {{ post.published_date|date:"d M Y" }}</p>
-      </div>
-      <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{post.approve_comments.count}}</a>
+   <div class="card mt-4 mr-6 test">
+    <h3 class="card-header load">
+      <a style=" font-size: 1.2em; text-transform: capitalize;"href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+    </h3>
+    <div class="card-body">
+      <h6 style="font-weight: normal;  margin-bottom: 1.5em;" class="card-title">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</h6>
+      <p class="card-text">
+        <p style="margin-bottom:-1px ;">Published on: {{ post.published_date|date:"d M Y" }}</p>
+        <p>Comments: {{post.approve_comments.count}}</p>
+      </p>
+      <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary backCo">Read More</a>
+    </div>
   </div>
   {% endfor %}
 </div>
