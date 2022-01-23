@@ -1,6 +1,7 @@
 {% extends "News/base.html" %}
 {% block content %}
   <h1>New Comment</h1>
+    <p>Author: {{user}}</p>
   <form class="post-form" method="post">
     {% csrf_token %}
     {{form.as_p}}
