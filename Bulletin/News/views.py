@@ -15,6 +15,11 @@ from django.views.generic import (TemplateView, ListView,
 class AboutView(TemplateView):
     template_name = 'News/about.html'
 
+class ContactView(TemplateView):
+    template_name = 'News/contact.html'
+
+class SubscriptionView(TemplateView):
+    template_name = 'News/subscription.html'
 
 class PostListView(ListView):
     model = Post
