@@ -102,6 +102,7 @@
   padding: 0;
   text-align: center;
   margin-left: 2em;
+  display: block;
 }
 
 .new1 li {
@@ -148,9 +149,9 @@ body {
   animation: hue 5000ms infinite linear; */
 }
 
-.bulletin_posts {
-  margin-left: 5%; /* 5% --> 10% */
-}
+/*.bulletin_posts {*/
+/*  margin-left: 20%; !* 5% --> 10% *!*/
+/*}*/
 
 .author {
   right: 1.5em;
