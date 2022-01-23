@@ -16,6 +16,7 @@
         <a href="{{ post.docfile.url }}" target="_blank">{{ post.docfile.name }}</a></li>
     {% endif %}
     </p>
+    <p>Author:{{ post.author }}</p>
 
   {% if user.is_authenticated and user == post.author %}
   <a class='btn btn-primary' href="{% url 'post_edit' pk=post.pk %}">
