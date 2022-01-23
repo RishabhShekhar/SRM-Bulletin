@@ -11,6 +11,7 @@
 .centerstage {
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 3em;
 }
 
 .postdate {
@@ -26,6 +27,7 @@
 .postcontent {
   font-family: "Montserrat", sans-serif;
   font-size: 1.5em;
+  margin-left: 5em;
 }
 
 .btn-comment {
@@ -73,6 +75,7 @@
 .new1 {
   position: fixed;
   z-index: 1;
+  padding-left: 2em;
 }
 
 /*#fff */
@@ -98,6 +101,7 @@
   width: 10%;
   padding: 0;
   text-align: center;
+  margin-left: 2em;
 }
 
 .new1 li {
@@ -117,21 +121,18 @@ body {
   background-attachment: fixed;
 }
 .test {
-  background-color: #e7e5f8;
-  box-shadow: darkred;
   border-radius: 25px;
   padding: 1rem;
-  border-color: rgb(28, 5, 71);
-  border: 2px solid #e2e8ec;
+  border-color: rgb(255, 255, 255);
+  /* border: 2em solid #e2e8ec; */
   color: #1a1a40;
-}
-
-.test h6 {
-  margin-bottom: 0;
+  border: 0 1px 1px 0 solid;
+  padding: 10px;
+  box-shadow: 5px 10px #92a9bd;
 }
 .backCo {
   background-color: rgb(8, 58, 116);
-  color: #e2e8ec;
+  color: #ece7e2;
 }
 
 .load {
@@ -145,4 +146,18 @@ body {
   /* filter: hue-rotate(0deg); */
   /* color: linear-gradient(45deg, #0f8, #08f);
   animation: hue 5000ms infinite linear; */
+}
+
+.author {
+  right: 1.5em;
+  display: inline;
+  position: absolute;
+  font-weight: normal;
+  font-size: 0.65em;
+  margin-top: 1.5em;
+}
+
+.main-title {
+  font-size: 1.3em;
+  text-transform: capitalize;
 }

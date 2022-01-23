@@ -3,15 +3,15 @@
 <div class="centerstage">
   {% for post in post_list %}
    <div class="card mt-4 mr-6 test">
-    <h3 class="card-header load">
-      <a style=" font-size: 1.2em; text-transform: capitalize;"href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
-    </h3>
+    <h4 class="card-header load">
+      <a class="main-title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+      <p class="author">Author: {{ post.author }}</p>
+    </h4>
     <div class="card-body">
-      <h6 style="font-weight: normal;  margin-bottom: 1.5em;" class="card-title">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</h6>
-      <p class="card-text">
-        <p style="margin-bottom:-1px ;">Published on: {{ post.published_date|date:"d M Y" }}</p>
-        <p>Comments: {{post.approve_comments.count}}</p>
-        <p>Posted by: {{ post.author }}</p>
+      <h6 style="font-weight: 300;  margin-bottom: 1.5em; font-size: 1.35em;" class="card-title">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</h6>
+      <p  class="card-text">
+        <p style="margin-bottom:-1px ; font-weight: lighter;">Published on: {{ post.published_date|date:"d M Y" }}</p>
+        <p  style="font-weight: lighter;">Comments: {{post.approve_comments.count}}</p>
       </p>
       <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary backCo">Read More</a>
     </div>
