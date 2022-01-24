@@ -2,11 +2,14 @@ appnope==0.1.2
 asgiref==3.4.1
 asttokens==2.0.5
 backcall==0.2.0
+beautifulsoup4==4.10.0
 black==21.12b0
+bootstrap4==0.1.0
 cffi==1.15.0
 click==8.0.3
 decorator==5.1.1
 Django==3.2.11
+django-bootstrap4==21.2
 django-currentuser==0.5.3
 executing==0.8.2
 ipython==8.0.1
@@ -26,6 +29,7 @@ Pygments==2.11.2
 python-dotenv==0.19.2
 pytz==2021.3
 six==1.16.0
+soupsieve==2.3.1
 sqlparse==0.4.2
 stack-data==0.1.4
 toml==0.10.2
