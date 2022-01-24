@@ -15,7 +15,7 @@
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 
-    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+    <link rel="stylesheet" href="{% static 'News/css/master.css' %}">
 
     <link href="https://fonts.googleapis.com/css2?family=Alata&family=Montserrat:wght@100&display=swap" rel="stylesheet">
   </head>
@@ -54,15 +54,18 @@
           <a class="nav-link" href="{% url 'draft_list' %}">Drafts</a>
       </li>
       <li class="nav-item active">
-          <a class="nav-link" href="{% url 'logout' %}?next=/">Log Out</a>
+          <a class="nav-link" href="{% url 'logout' %}?next=/thanks">Log Out</a>
       </li>
       <li>
           <a class="nav-link">Welcome: {{user.username}}</a>
       </li>
       {% else %}
         <li>
-          <a href="{% url 'login' %}"><i class="fas fa-user"></i></i></a>
+          <a href="{% url 'login' %}"><i class="fas fa-user"></i></a>
         </li>
+          <li>
+          <a class="nav-item nav-link" href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a>
+          </li>
       {% endif %}
     </ul>
 
