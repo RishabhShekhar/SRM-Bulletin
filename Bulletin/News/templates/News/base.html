@@ -69,17 +69,18 @@
   </div>
 </nav>
 
-
- <ul class ="new1">
-   <a href="{% url 'post_list' %}"><li class="icon fa fa-home" id="uno"></li></a>
-   <a href="{% url 'subscription' %}"><li class="icon fas fa-bell" id="dos"></li></a>
-   <a href="{% url 'about' %}"><li class="icon fas fa-info-circle" id="tres"></li></a>
-   <a href="{% url 'contact' %}"><li class="icon fas fa-phone-alt" id="cuatro"></li></a>
- </ul>
-
-    <div class="content container">
+    <div class="content container-fluid">
       <div class="row">
-        <div class="col-md-8">
+      <div class="col-md-1">
+             <ul class="new1">
+               <a href="{% url 'post_list' %}"><li class="icon fa fa-home" id="uno"></li></a>
+               <a href="{% url 'subscription' %}"><li class="icon fas fa-bell" id="dos"></li></a>
+               <a href="{% url 'about' %}"><li class="icon fas fa-info-circle" id="tres"></li></a>
+               <a href="{% url 'contact' %}"><li class="icon fas fa-phone-alt" id="cuatro"></li></a>
+             </ul>
+      </div>
+
+        <div class="col-md-7">
           <div class="bulletin_posts">
             {% block content %}
             {% endblock %}
