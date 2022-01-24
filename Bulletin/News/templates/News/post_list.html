@@ -1,12 +1,13 @@
 {% extends "News/base.html" %}
 {% block content %}
 <div class="centerstage">
+  <h1>Home</h1>
   {% for post in post_list %}
    <div class="card mt-4 mr-6 test">
-    <h4 class="card-header load">
-      <a class="main-title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+    <h5 class="card-header load">
+      <a class="main-title" href="{% url 'post_detail' pk=post.pk %}" style="color: #3d3d95;">{{ post.title }}</a>
       <p class="author">Author: {{ post.author }}</p>
-    </h4>
+    </h5>
     <div class="card-body">
       <h6 style="font-weight: 300;  margin-bottom: 1.5em; font-size: 1.35em;" class="card-title">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</h6>
       <p  class="card-text">

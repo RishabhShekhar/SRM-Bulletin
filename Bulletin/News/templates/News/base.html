@@ -30,13 +30,19 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'about' %}">About<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'about' %}">Author</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://www.github.com">Github</a>
+        <!-- <a class="nav-link" href="https://www.github.com"><li class="icon fab fa-github" id="uno"></li></a> -->
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://www.linkedin.com">LinkedIn</a>
+        <!-- <a class="nav-link" href="https://www.linkedin.com"><li class="icon fab fa-linkedin" id="uno"></li></a> -->
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="https://www.srmist.edu.in/campus_connect/spectrum" target="_blank">Magazine</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="#">Student Login</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -77,12 +83,9 @@
           <div class="bulletin_posts">
             {% block content %}
             {% endblock %}
-
           </div>
         </div>
-
       </div>
-
     </div>
   </body>
 </html>
