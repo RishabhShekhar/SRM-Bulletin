@@ -1,22 +1,50 @@
 {% extends "base.html" %}
+{% load static %}
+{% block menu %}
+<header class="masthead" style="background-image: url('{% static "News/img/home-bg.jpg" %}');">
+            <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto position-relative">
+                    <div class="site-heading">
+                        <h1>SRM Bulletin</h1><span class="subheading">For Students By Students</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
 {% block content %}
-<div class="centerstage">
-  <h1>Home</h1>
-  {% for post in post_list %}
-   <div class="card mt-4 mr-6 test">
-    <h5 class="card-header load">
-      <a class="main-title" href="{% url 'post_detail' pk=post.pk %}" style="color: #3d3d95;">{{ post.title }}</a>
-      <p class="author">Author: {{ post.author }}</p>
-    </h5>
-    <div class="card-body">
-      <h6 style="font-weight: 300;  margin-bottom: 1.5em; font-size: 1.35em;" class="card-title">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</h6>
-      <p  class="card-text">
-        <p style="margin-bottom:-1px ; font-weight: lighter;">Published on: {{ post.published_date|date:"d M Y" }}</p>
-        <p  style="font-weight: lighter;">Comments: {{post.approve_comments.count}}</p>
-      </p>
-      <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary backCo">Read More</a>
-    </div>
-  </div>
-  {% endfor %}
-</div>
+{#<div class="centerstage">#}
+{#  <h1>Home</h1>#}
+{#  {% for post in post_list %}#}
+{#   <div class="card mt-4 mr-6 test">#}
+{#    <h5 class="card-header load">#}
+{#      <a class="main-title" href="{% url 'post_detail' pk=post.pk %}" style="color: #3d3d95;">{{ post.title }}</a>#}
+{#      <p class="author">Author: {{ post.author }}</p>#}
+{#    </h5>#}
+{#    <div class="card-body">#}
+{#      <h6 style="font-weight: 300;  margin-bottom: 1.5em; font-size: 1.35em;" class="card-title">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</h6>#}
+{#      <p  class="card-text">#}
+{#        <p style="margin-bottom:-1px ; font-weight: lighter;">Published on: {{ post.published_date|date:"d M Y" }}</p>#}
+{#        <p  style="font-weight: lighter;">Comments: {{post.approve_comments.count}}</p>#}
+{#      </p>#}
+{#      <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary backCo">Read More</a>#}
+{#    </div>#}
+{#  </div>#}
+{#  {% endfor %}#}
+{#</div>#}
+    {% for post in post_list %}
+    <div class="post-preview"><a href="{% url 'post_detail' pk=post.pk %}">
+                        <h2 class="post-title"> {{ post.title }}</h2>
+                        <h3 class="post-subtitle">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</h3>
+                    </a>
+                    <p class="post-meta">Posted by&nbsp;{{ post.author }} on {{ post.published_date|date:"d M Y" }}</p>
+                     <p class="post-meta">Comments: {{post.approve_comments.count}}</p>
+{#    <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary backCo">Read More</a>#}
+                </div>
+                <hr />
+     {% endfor %}
+    <div class="clearfix"><button class="btn btn-primary float-end" type="button">Older Posts ⇒</button></div>
 {% endblock %}

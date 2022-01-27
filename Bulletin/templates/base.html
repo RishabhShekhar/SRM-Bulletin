@@ -3,34 +3,43 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
     <title>Bulletin</title>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+{#    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
+{#    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>#}
+{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>#}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+{##}
     <script src="https://kit.fontawesome.com/14d85fe3f5.js" crossorigin="anonymous"></script>
-
+{##}
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 
-    <link rel="stylesheet" href="{% static 'News/css/master.css' %}">
+{#    <link rel="stylesheet" href="{% static 'News/css/master.css' %}">#}
+
+      <link rel="stylesheet" href="{% static 'News/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="{% static 'News/fonts/font-awesome.min.css' %}">
 
     <link href="https://fonts.googleapis.com/css2?family=Alata&family=Montserrat:wght@100&display=swap" rel="stylesheet">
   </head>
-  <body class='loader'>
+  <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light techfont sticky-top custom-navbar">
-  <a class="navbar-brand bigbrand" href="{% url 'post_list' %}">Bulletin</a>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+            <div class="container"><a class="navbar-brand" href="{% url 'post_list' %}">Bulletin</a>
+{#                <button data-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>#}
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <i class="fa fa-bars"></i>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'about' %}">Author</a>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">About Us</a>
       </li>
       <li class="nav-item">
         <!-- <a class="nav-link" href="https://www.github.com"><li class="icon fab fa-github" id="uno"></li></a> -->
@@ -38,59 +47,86 @@
       <li class="nav-item">
         <!-- <a class="nav-link" href="https://www.linkedin.com"><li class="icon fab fa-linkedin" id="uno"></li></a> -->
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item">
         <a class="nav-link" href="https://www.srmist.edu.in/campus_connect/spectrum" target="_blank">Magazine</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link" href="#">Student Login</a>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'subscription' %}">Subscription</a>
       </li>
+        {% if not user.is_authenticated %}
+      <li class="nav-item dropdown">
+          <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#" aria-haspopup="true" id="navbarDropdownMenuLink">Student Login</a>
+          <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">ERP Login</a>
+              <a class="dropdown-item" href="#">Superset Login</a>
+          </div>
+      </li>
+        {% endif %}
     </ul>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="navbar-nav navbar-right">
       {% if user.is_authenticated %}
-      <li class="nav-item active">
+      <li class="nav-item">
           <a class="nav-link" href="{% url 'post_new' %}">New Post</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
           <a class="nav-link" href="{% url 'draft_list' %}">Drafts</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}?next=/thanks">Log Out</a>
       </li>
-      <li>
+      <li class="nav-item">
           <a class="nav-link">Welcome: {{user.username}}</a>
       </li>
       {% else %}
-        <li>
+        <li class="nav-item">
           <a href="{% url 'login' %}"><i class="fas fa-user"></i></a>
         </li>
-          <li>
-          <a class="nav-item nav-link" href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'accounts:signup' %}" >Sign up</a>
           </li>
       {% endif %}
     </ul>
+  </div>
 
   </div>
-</nav>
+    </nav>
 
-    <div class="content container-fluid">
+    {% block menu %}
+    {% endblock %}
+
+    <div class="container">
       <div class="row">
-      <div class="col-md-1">
-             <ul class="new1">
-               <a href="{% url 'post_list' %}"><li class="icon fa fa-home" id="uno"></li></a>
-               <a href="{% url 'subscription' %}"><li class="icon fas fa-bell" id="dos"></li></a>
-               <a href="{% url 'about' %}"><li class="icon fas fa-info-circle" id="tres"></li></a>
-               <a href="{% url 'contact' %}"><li class="icon fas fa-phone-alt" id="cuatro"></li></a>
-             </ul>
-      </div>
+{#      <div class="col-md-2 col-lg-1 mx-auto">#}
+{#             <ul class="new1">#}
+{#               <a href="{% url 'post_list' %}"><li class="icon fa fa-home" id="uno"></li></a>#}
+{#               <a href="{% url 'subscription' %}"><li class="icon fas fa-bell" id="dos"></li></a>#}
+{#               <a href="{% url 'about' %}"><li class="icon fas fa-info-circle" id="tres"></li></a>#}
+{#               <a href="{% url 'contact' %}"><li class="icon fas fa-phone-alt" id="cuatro"></li></a>#}
+{#             </ul>#}
+{#      </div>#}
 
-        <div class="col-md-7">
-          <div class="bulletin_posts">
+        <div class="col-md-10 col-lg-8">
             {% block content %}
             {% endblock %}
-          </div>
         </div>
       </div>
     </div>
   </body>
+<footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></li>
+                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></li>
+                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-github fa-stack-1x fa-inverse"></i></span></li>
+                    </ul>
+                    <p class="text-muted copyright">Copyright&nbsp;©&nbsp;Engineers 2022</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'News/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'News/js/clean-blog.js' %}"></script>
 </html>
 
