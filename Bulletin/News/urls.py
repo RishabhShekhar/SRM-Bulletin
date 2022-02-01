@@ -3,7 +3,7 @@ from News import views
 
 urlpatterns = [
     path('',views.PostListView.as_view(),name='post_list'),
-    path('about/',views.AboutView.as_view(),name='about'),
+    path('dashboard/',views.DashboardView.as_view(),name='dashboard'),
     path('contact/',views.ContactView.as_view(),name='contact'),
     path('subscription/',views.SubscriptionView.as_view(),name='subscription'),
     path('post/<int:pk>',views.PostDetailView.as_view(),name='post_detail'),

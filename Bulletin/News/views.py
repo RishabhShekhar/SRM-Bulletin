@@ -12,8 +12,8 @@ from django.views.generic import (TemplateView, ListView,
 
 # Create your views here.
 
-class AboutView(TemplateView):
-    template_name = 'News/about.html'
+class DashboardView(TemplateView):
+    template_name = 'News/dashboard.html'
 
 class ContactView(TemplateView):
     template_name = 'News/contact.html'
