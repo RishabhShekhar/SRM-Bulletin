@@ -6,3 +6,4 @@ from django.contrib.auth.models import User
 def set_new_user_inactive(sender, instance, **kwargs):
     if instance._state.adding is True:
         instance.is_active = False
+        print("Created Non Active User")
