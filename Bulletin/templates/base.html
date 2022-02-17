@@ -7,13 +7,11 @@
 
     <title>Bulletin</title>
 
-{#    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
-{#    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>#}
-{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>#}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-{##}
     <script src="https://kit.fontawesome.com/14d85fe3f5.js" crossorigin="anonymous"></script>
-{##}
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 
@@ -35,20 +33,29 @@
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+        <a class="nav-link" href="{% url 'dashboard' %}">Notices</a>
       </li>
-      <li class="nav-item">
-        <!-- <a class="nav-link" href="https://www.github.com"><li class="icon fab fa-github" id="uno"></li></a> -->
-      </li>
-      <li class="nav-item">
-        <!-- <a class="nav-link" href="https://www.linkedin.com"><li class="icon fab fa-linkedin" id="uno"></li></a> -->
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://www.srmist.edu.in/campus_connect/spectrum" target="_blank">Magazine</a>
-      </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'subscription' %}">Subscription</a>
-      </li>
+{#      <li class="nav-item">#}
+{#         <a class="nav-link" href="https://www.github.com"><li class="icon fab fa-github" id="uno"></li></a>#}
+{#      </li>#}
+{#      <li class="nav-item">#}
+{#         <a class="nav-link" href="https://www.linkedin.com"><li class="icon fab fa-linkedin" id="uno"></li></a>#}
+{#      </li>#}
+    <li class="nav-item dropdown">
+          <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#" aria-haspopup="true" id="ResourcesMenuLink">Resources</a>
+          <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Notes</a>
+              <a class="dropdown-item" href="{% url 'Calendar:cal' %}">Calendar</a>
+              <a class="dropdown-item" href="#">Calculator</a>
+
+          </div>
+    </li>
+{#      <li class="nav-item">#}
+{#        <a class="nav-link" href="https://www.srmist.edu.in/campus_connect/spectrum" target="_blank">Magazine</a>#}
+{#      </li>#}
+{#    <li class="nav-item">#}
+{#        <a class="nav-link" href="{% url 'subscription' %}">Subscription</a>#}
+{#      </li>#}
         {% if not user.is_authenticated %}
       <li class="nav-item dropdown">
           <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#" aria-haspopup="true" id="navbarDropdownMenuLink">Student Login</a>
@@ -58,6 +65,9 @@
           </div>
       </li>
         {% endif %}
+    <li class="nav-item">
+        <a class="nav-link" href="https://www.srmist.edu.in/campus_connect/spectrum" target="_blank">Faculties</a>
+      </li>
     </ul>
     <ul class="navbar-nav navbar-right">
       {% if user.is_authenticated %}
