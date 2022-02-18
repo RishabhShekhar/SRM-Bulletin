@@ -21,6 +21,9 @@ class ContactView(TemplateView):
 class SubscriptionView(TemplateView):
     template_name = 'News/subscription.html'
 
+class WelcomeView(TemplateView):
+    template_name = 'News/index.html'
+
 class PostListView(ListView):
     model = Post
 

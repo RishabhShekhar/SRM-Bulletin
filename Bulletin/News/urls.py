@@ -2,7 +2,8 @@ from django.urls import path
 from News import views
 
 urlpatterns = [
-    path('',views.PostListView.as_view(),name='post_list'),
+    path('', views.WelcomeView.as_view(), name='welcome'),
+    path('bulletin/',views.PostListView.as_view(),name='post_list'),
     path('dashboard/',views.DashboardView.as_view(),name='dashboard'),
     path('contact/',views.ContactView.as_view(),name='contact'),
     path('subscription/',views.SubscriptionView.as_view(),name='subscription'),
