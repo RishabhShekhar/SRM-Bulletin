@@ -18,7 +18,7 @@ class Post(models.Model):
         self.save()
 
     def send_emails(self):
-        send_mail(self.title,html.strip_tags(self.text),"bulletinsrm@gmail.com",list(Subscription.objects.all().values_list('sub_email',flat=True)), fail_silently = False)
+        send_mail(self.title,html.strip_tags(self.text),"bulletinsrm@gmail.com",list(Subscription.objects.all().values_list('sub_email',flat=True)), html_message=self.text , fail_silently = False)
 
 
     def approve_comments(self):
