@@ -1,5 +1,5 @@
 from django import forms
-from News.models import Post,Comment
+from News.models import Post,Comment,Subscription
 
 class PostForm(forms.ModelForm):
     docfile = forms.FileField(
@@ -28,3 +28,9 @@ class CommentForm(forms.ModelForm):
         'author':forms.TextInput(attrs={'class':'textinputclass'}),
         'text':forms.Textarea(attrs={'class':'editable medium-editor-textarea'})
     }
+
+class SubscriptionForm(forms.ModelForm):
+
+    class Meta():
+        model=Subscription
+        fields = '__all__'

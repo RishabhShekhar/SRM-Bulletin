@@ -70,6 +70,7 @@ class DraftListView(ListView, LoginRequiredMixin):
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
+    post.send_emails()
     return redirect('post_detail', pk=pk)
 
 

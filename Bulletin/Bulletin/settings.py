@@ -131,6 +131,15 @@ USE_L10N = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = "<Enter Email>"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = "<Enter Password>"
+
+
+
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'thanks/'
 

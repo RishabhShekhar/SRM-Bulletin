@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.urls import reverse
 from django_currentuser.middleware import (get_current_user, get_current_authenticated_user)
 from django_currentuser.db.models import CurrentUserField
+from django.core.mail import send_mail
 
 class Post(models.Model):
     author= CurrentUserField()
@@ -15,6 +16,9 @@ class Post(models.Model):
     def publish(self):
         self.published_date=timezone.now()
         self.save()
+
+    def send_emails(self):
+        send_mail(self.title,self.text,"bulletinsrm@gmail.com",list(Subscription.objects.all().values_list('sub_email',flat=True)), fail_silently = False)
 
 
     def approve_comments(self):
@@ -43,4 +47,10 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+class Subscription(models.Model):
+    sub_email = models.EmailField(max_length = 254)
+
+    def __str__(self):
+        return self.sub_email
 
