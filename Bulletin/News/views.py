@@ -13,7 +13,7 @@ from django.views.generic import (TemplateView, ListView,
 # Create your views here.
 
 class DashboardView(TemplateView):
-    template_name = 'News/dashboard.html'
+    template_name = 'News/dashboard_new.html'
 
 class ContactView(TemplateView):
     template_name = 'News/contact.html'
