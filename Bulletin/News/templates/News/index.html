@@ -1,14 +1,23 @@
 {% extends 'base.html' %} {% load static %} {% block welcome %}
 <header class="text-center text-white masthead">
+  <link rel="stylesheet" href="../../static/css/buttonStyles.css" />
   <div class="masthead-content">
     <div class="container">
-      <h2 class="masthead-heading mb-0">Learn! Leap! Lead!</h2>
-      <a
+        <h2>At SRM</h2>
+        <span>We aim to</span>
+      <h4 class="masthead-heading mb-0">Learn! Leap! Lead!</h4>
+      <!-- <a
         class="btn btn-primary btn-xl rounded-pill mt-5"
         role="button"
         href="{% url 'dashboard' %}"
         >Learn More</a
-      >
+      > -->
+
+      <a href="{% url 'dashboard' %}" role="button" class="frame">
+        <button class="custom-btn btn-12 customBtnStyles">
+          <span>Click!</span><span>Read More</span>
+        </button>
+      </a>
     </div>
   </div>
   <div class="bg-circle-1 bg-circle"></div>
@@ -21,17 +30,15 @@
     <div class="row align-items-center">
       <div class="col-lg-6 order-lg-2">
         <div class="p-5">
-          <img class="rounded-circle img-fluid" src= {% static "News/img/01.jpg"%}>
+          <img class="rounded-circle img-fluid" src= {% static "News/img/learning.jpg"%}>
         </div>
       </div>
       <div class="col-lg-6 order-lg-1">
         <div class="p-5">
           <h2 class="display-4">FOR THOSE WHO WANT TO LEARN...</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-            aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam
-            exercitationem, ea animi blanditiis recusandae! Ratione voluptatum
-            molestiae adipisci, beatae obcaecati.
+           <h6>IF YOU ARE WILLING TO LEARN NO ONE CAN STOP YOU</h6>
+           Learning is the driving influences from internal or external forces that give students power to learn effectively. Teachers are the best source of motivation in the teaching-learning interaction. We encourage each and everyone to learn and grow in whatever possible ways. We provide all the necessary learning resources that are needed to learn and gain knowledge here at SRM-Bulletin
           </p>
         </div>
       </div>
@@ -43,18 +50,16 @@
     <div class="row align-items-center">
       <div class="col-lg-6 order-lg-1">
         <div class="p-5">
-          <img class="rounded-circle img-fluid" src={% static "News/img/02.jpg"%}>
+          <img class="rounded-circle img-fluid" src={% static "News/img/build.jpg"%}>
         </div>
       </div>
       <div class="col-lg-6 order-lg-2">
         <div class="p-5">
           <h2 class="display-4">FOR THOSE WHO WANT TO BUILD...</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-            aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam
-            exercitationem, ea animi blanditiis recusandae! Ratione voluptatum
-            molestiae adipisci, beatae obcaecati.
-          </p>
+            <h6>BUILDING GREAT THINGS THAT DONT EXIST</h6>
+            It’s the drive you have to work toward your goals, to put effort into self-development, and to achieve personal fulfillment. Those who want to build should have great passion and motivation and here we give that the right direction by providing excellent placement support and guidance on resume building through Superset platform.
+           </p>
         </div>
       </div>
     </div>
@@ -65,18 +70,16 @@
     <div class="row align-items-center">
       <div class="col-lg-6 order-lg-2">
         <div class="p-5">
-          <img class="rounded-circle img-fluid" src={% static "News/img/03.jpg"%}>
+          <img class="rounded-circle img-fluid" src={% static "News/img/time.jpg"%}>
         </div>
       </div>
       <div class="col-lg-6 order-lg-1">
         <div class="p-5">
-          <h2 class="display-4">FOR THOSE WHO WANT TO PLAY...</h2>
+          <h2 class="display-4">FOR THOSE WHO WANT TO SAVE TIME...</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-            aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam
-            exercitationem, ea animi blanditiis recusandae! Ratione voluptatum
-            molestiae adipisci, beatae obcaecati.
-          </p>
+            <h6>OUR GREATEST CURRENCY IS THE TIME THAT WE SAVE</h6>
+            The goal that we aim to achieve is help students and faculty save time in finding and gathering useful resources by bringing them to one place here on this platform. We bring together all kinds of resources and an exclusive notice board which helps faculty members to post notices that students might find helpful and miss by chance. This venture is all about helping saving time and making interactions between students and faculty easier and smoother.
+           </p>
         </div>
       </div>
     </div>
