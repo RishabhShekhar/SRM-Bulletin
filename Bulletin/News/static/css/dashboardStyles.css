@@ -1,5 +1,5 @@
 .content {
-  margin: 1rem;
+  margin: 0 1rem 1rem;
 }
 
 .bulletin {
@@ -8,4 +8,8 @@
 }
 .card {
   margin-top: 1rem;
+}
+
+.filler {
+  margin-right: 0.8rem;
 }
