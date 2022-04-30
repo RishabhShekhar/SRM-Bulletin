@@ -21,7 +21,7 @@
 {#  {% for post in post_list %}#}
 {#   <div class="card mt-4 mr-6 test">#}
 {#    <h5 class="card-header load">#}
-{#      <a class="main-title" href="{% url 'post_detail' pk=post.pk %}" style="color: #3d3d95;">{{ post.title }}</a>#}
+{#      <a class="main-title" href="{% url 'post_detail' pk=post.pk %}" style="color #3d3d95;">{{ post.title }}</a>#}
 {#      <p class="author">Author: {{ post.author }}</p>#}
 {#    </h5>#}
 {#    <div class="card-body">#}
@@ -38,7 +38,7 @@
     {% for post in post_list %}
     <div class="post-preview"><a href="{% url 'post_detail' pk=post.pk %}">
                         <h2 class="post-title"> {{ post.title }}</h2>
-                        <h3 class="post-subtitle">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</h3>
+                        <p class="post-subtitle">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</p>
                     </a>
                     <p class="post-meta">Posted by&nbsp;{{ post.author }} on {{ post.published_date|date:"d M Y" }}</p>
                      <p class="post-meta">Comments: {{post.approve_comments.count}}</p>
@@ -47,4 +47,94 @@
                 <hr />
      {% endfor %}
     <div class="clearfix"><button class="btn btn-primary float-end" type="button">Older Posts ⇒</button></div>
+
+
+
+
+
+    <style>
+.newsletter {
+     padding: 80px 0;
+     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+ }
+
+.newsletter .content {
+     max-width: 650px;
+     margin: 0 auto;
+     text-align: center;
+     position: relative;
+     z-index: 2
+ }
+
+.content-tuned {
+     font-size: 0.8rem;
+     margin-bottom: 34px !important;
+     color: rgb(0, 0, 0)
+ }
+
+h2 {
+     color: rgb(0, 0, 0);
+     margin-bottom: 6px
+ }
+
+.form-control {
+     height: 50px;
+     border-color: #ffffff;
+     border-radius: 2px 0px 0px 2px
+ }
+
+.form-control:focus {
+     box-shadow: none !important;
+     border: 2px solid #243c4f;
+     border-color: none
+ }
+
+.btn {
+     min-height: 50px;
+     border-radius: 0;
+     background: #243c4f;
+     color: rgb(255, 255, 255);
+     font-weight: 300
+ }
+
+.btn:hover {
+     background: red;
+     color: #fff
+ }
+
+.form-control:focus {
+     color: #495057;
+     background-color: #fff;
+     border-color: #80bdff;
+     outline: 0;
+     box-shadow: 0 0 0 0rem rgba(0, 123, 255, .25) !important
+ }
+
+.unsubscribe-link {
+     text-decoration: none !important;
+     font-size: 13px;
+     color: rgb(0, 0, 0)
+ }
+
+.unsubscribe-link:hover {
+     text-decoration: none !important;
+     color: rgb(0, 0, 0)
+ }
+    </style>
+
+
+    <div class="newsletter" style="margin-top:5rem ; width: 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="content">
+                        <h2>SUBSCRIBE NOW</h2>
+                        <h6 class="content-tuned">Subscribe to our newsletter and stay tuned with future updates</h6>
+                        <div class="input-group"> <input type="email" class="form-control" placeholder="Enter email to subscribe"> <span class="input-group-btn"> <button class="btn" type="submit">Subscribe Now</button> </div>
+                        <div class="text-center"> <a class="unsubscribe-link" href="#">Would you like to unsubscribe?</a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
