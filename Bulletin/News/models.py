@@ -4,6 +4,7 @@ from django.urls import reverse
 from django_currentuser.middleware import (get_current_user, get_current_authenticated_user)
 from django_currentuser.db.models import CurrentUserField
 from django.core.mail import send_mail
+from django.core.validators import RegexValidator
 
 class Post(models.Model):
     author= CurrentUserField()
@@ -48,7 +49,11 @@ class Comment(models.Model):
         return self.text
 
 class Subscription(models.Model):
-    sub_email = models.EmailField(max_length = 254)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    official_email = models.EmailField(max_length=254)
+    phoneNumberRegex = RegexValidator(regex=r"^\+?1?\d{8,15}$")
+    phone_number = models.CharField(validators=[phoneNumberRegex], max_length=16, unique=True)
 
     def __str__(self):
         return self.sub_email

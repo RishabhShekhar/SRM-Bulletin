@@ -32,5 +32,5 @@ class CommentForm(forms.ModelForm):
 class SubscriptionForm(forms.ModelForm):
 
     class Meta():
-        model=Subscription
+        model = Subscription
         fields = '__all__'
