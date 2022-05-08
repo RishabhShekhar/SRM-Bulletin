@@ -19,7 +19,7 @@ class Post(models.Model):
         self.save()
 
     def send_emails(self):
-        send_mail(self.title,html.strip_tags(self.text),"bulletinsrm@gmail.com",list(Subscription.objects.all().values_list('sub_email',flat=True)), html_message=self.text , fail_silently = False)
+        send_mail(self.title,html.strip_tags(self.text),"bulletinsrm@gmail.com",list(Subscription.objects.all().values_list('official_email',flat=True)), html_message=self.text , fail_silently = False)
 
 
     def approve_comments(self):
@@ -56,5 +56,5 @@ class Subscription(models.Model):
     phone_number = models.CharField(validators=[phoneNumberRegex], max_length=16, unique=True)
 
     def __str__(self):
-        return self.sub_email
+        return self.official_email
 

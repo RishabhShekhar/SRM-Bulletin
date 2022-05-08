@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bootstrap4 %}
+
+
 {% block menu %}
     <header class="masthead" style="background-image: url('{% static "News/img/contact-bg.jpg" %}');">
     <div class="overlay"></div>
@@ -19,7 +22,8 @@
     <p>Author: {{user}}</p>
   <form class="post-form" method="post">
     {% csrf_token %}
-    {{form.as_p}}
+      {% bootstrap_form form %}
+{#    {{form.as_p}}#}
     <button type="submit" class="btn btn-outline-primary">Post Comment</button>
   </form>
   <script>var editor= new MediumEditor('.editable')</script>

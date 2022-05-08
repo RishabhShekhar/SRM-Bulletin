@@ -3,6 +3,39 @@
 <html lang="en">
 
 <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/14d85fe3f5.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+{#    <link rel="stylesheet" href="{% static 'News/css/master.css' %}">#}
+
+      <link rel="stylesheet" href="{% static 'News/bootstrap/css/bootstrap.min.css' %}">
+            <link rel="stylesheet" href="{% static 'News/bootstrap/css/min2.css' %}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="{% static 'News/fonts/font-awesome.min.css' %}">
+            <link rel="stylesheet" href="{% static 'News/css/Pretty-Footer.css' %}">
+        <link rel="stylesheet" href="{% static 'News/css/styles.css' %}">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Montserrat:wght@100&display=swap" rel="stylesheet">
+
+          <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,6 +48,78 @@
   <title>SRM Planner</title>
 </head>
 <body>
+<nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+            <div class="container"><a class="navbar-brand" href="{% url 'welcome' %}">Bulletin</a>
+            <button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'post_list' %}">Notices</a>
+      </li>
+{#      <li class="nav-item">#}
+{#         <a class="nav-link" href="https://www.github.com"><li class="icon fab fa-github" id="uno"></li></a>#}
+{#      </li>#}
+{#      <li class="nav-item">#}
+{#         <a class="nav-link" href="https://www.linkedin.com"><li class="icon fab fa-linkedin" id="uno"></li></a>#}
+{#      </li>#}
+    <li class="nav-item dropdown">
+          <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#" aria-haspopup="true" id="ResourcesMenuLink">Resources</a>
+          <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'notes' %}">Notes</a>
+              <a class="dropdown-item" href="{% url 'Calendar:cal' %}">Calendar</a>
+              <a class="dropdown-item" href="https://optimusam.github.io/srmgpa/" target="_blank" >Calculator</a>
+
+          </div>
+    </li>
+{#      <li class="nav-item">#}
+{#        <a class="nav-link" href="https://www.srmist.edu.in/campus_connect/spectrum" target="_blank">Magazine</a>#}
+{#      </li>#}
+{#    <li class="nav-item">#}
+{#        <a class="nav-link" href="{% url 'subscription' %}">Subscription</a>#}
+{#      </li>#}
+        {% if not user.is_authenticated %}
+      <li class="nav-item dropdown">
+          <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#" aria-haspopup="true" id="navbarDropdownMenuLink">Student Login</a>
+          <div class="dropdown-menu">
+              <a class="dropdown-item" href="https://evarsity.srmist.edu.in/srmsip/">ERP Login</a>
+              <a class="dropdown-item" href="https://app.joinsuperset.com/#/s/feed">Superset Login</a>
+          </div>
+      </li>
+        {% endif %}
+    <li class="nav-item">
+        <a class="nav-link" href="https://www.srmist.edu.in/campus_connect/spectrum" target="_blank">Magazine</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav navbar-right">
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'post_new' %}">New Post</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'draft_list' %}">Drafts</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}?next=/thanks">Log Out</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link">Welcome: {{user.username}}</a>
+      </li>
+      {% else %}
+        <li class="nav-item">
+          <a href="{% url 'login' %}"><i class="fas fa-user"></i></a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'accounts:signup' %}" >Sign up</a>
+          </li>
+      {% endif %}
+    </ul>
+  </div>
+
+  </div>
+    </nav>
+
+
 
   <h1 class="title">{% block title %}{% endblock %}</h1>
 
@@ -33,4 +138,32 @@
   {% block script %}
   {% endblock %}
 </body>
+<footer>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 footer-navigation">
+                <h3><a href="#">SRM<span>&nbsp;Bulletin </span></a></h3>
+                <p class="links"><a href="#">Notices</a><strong> · </strong><a href="#">Resources</a><strong> · </strong><a href="#">Student Login</a><strong> · </strong><a href="#">SignUp</a></p>
+                <p class="company-name">SRM Bulletin © 2022 </p>
+            </div>
+            <div class="col-sm-6 col-md-4 footer-contacts">
+                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                    <p><span class="new-line-span">Delhi-Meerut Road,</span>Ghaziabad</p>
+                </div>
+                <div><i class="fa fa-phone footer-contacts-icon"></i>
+                    <p class="footer-center-info email text-start">Contact Us +916304807158</p>
+                </div>
+                <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                    <p> <a href="#" target="_blank">support@srmBulletin.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-4 footer-about">
+
+                <h4>About Us</h4>
+                <p> We are a small team of developers trying to give back to the community in the best way possible.</p>
+                <h6>Striving to make a difference each day</h6>
+                <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+            </div>
+        </div>
+    </footer>
+
 </html>
