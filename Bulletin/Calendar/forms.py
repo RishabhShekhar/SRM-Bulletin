@@ -1,7 +1,17 @@
 from django.forms import ModelForm, DateInput
+from django import forms
 from Calendar.models import Event
 
+event_types = [
+    ('important_date', 'Important Date'),
+    ('holiday', 'Holiday'),
+    ('upcoming_event', 'Upcoming Event')
+    ]
+
 class EventForm(ModelForm):
+
+  event_type = forms.CharField(label='Event Type', widget=forms.Select(choices=event_types))
+
   class Meta:
     model = Event
     # datetime-local is a HTML5 input type, format to make date time show on fields

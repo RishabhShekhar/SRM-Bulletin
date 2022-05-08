@@ -6,6 +6,7 @@ class Event(models.Model):
     description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+    event_type = models.CharField(max_length=100)
 
     @property
     def get_html_url(self):
