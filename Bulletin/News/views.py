@@ -3,7 +3,7 @@ from django.utils import timezone
 from News.models import Post, Comment
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from News.forms import PostForm, CommentForm
+from News.forms import PostForm, CommentForm, SubscriptionForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (TemplateView, ListView,
                                   DetailView, CreateView,
@@ -20,9 +20,6 @@ class DashboardView(TemplateView):
 
 class ContactView(TemplateView):
     template_name = 'News/contact.html'
-
-class SubscriptionView(TemplateView):
-    template_name = 'News/subscription.html'
 
 class WelcomeView(TemplateView):
     template_name = 'News/index.html'
@@ -65,6 +62,19 @@ class DraftListView(ListView, LoginRequiredMixin):
 
     def get_queryset(self):
         return Post.objects.filter(published_date__isnull=True).order_by('create_date')
+
+
+def add_subscriber(request):
+
+    if request.method == 'POST':
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            subscription = form.save(commit=False)
+            subscription.save()
+            return redirect('post_list')
+    else:
+        form = SubscriptionForm()
+        return render(request, 'News/subscription_form.html', {'form': form})
 
 
 # ----------------------------------------------------------------------------------------------------
