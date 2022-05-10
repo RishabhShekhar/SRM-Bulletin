@@ -53,8 +53,9 @@
               <div class="card-body">
                 <h5 class="card-title">Important Dates</h5>
                 <p class="card-text">
-                  <li><b>8th May 2022 -</b> Internal Assessment III</li>
-                  <li><b>11th May 2022 -</b> University Practical</li>
+                  {% for event in dashboard.all_important %}
+                  <li><b>{{ event.start_time | date:'d/m/Y' }} - </b>{{ event.title }}</li>
+                  {% endfor %}
                 </p>
                 <a href="{% url 'Calendar:cal' %}" class="frame">
                   <button class="custom-btn btn-3"><span>Know More</span></button>
@@ -67,10 +68,9 @@
               <div class="card-body">
                 <h5 class="card-title">Upcoming Events</h5>
                 <p class="card-text">
-                  <ul>
-                  <li><b>2nd May 2022 -</b> Innovate</li>
-                  <li><b>17th May 2022 -</b> Alumni Talk</li>
-                    </ul>
+                 {% for event in dashboard.all_upcoming %}
+                  <li><b>{{ event.start_time | date:'d/m/Y' }} - </b>{{ event.title }}</li>
+                  {% endfor %}
                 </p>
                 <a href="{% url 'Calendar:cal' %}" class="frame">
                   <button class="custom-btn btn-3"><span>Know More</span></button>
@@ -80,7 +80,7 @@
           </div>
         </div>
         <div class="flex-column bulletin card customContainer">
-            {% for post in post_list %}
+            {% for post in dashboard.all_notice %}
                 <div class="card customCard">
             <h6 class="card-header">{{ post.title }}</h6>
             <div class="card-body">
@@ -94,7 +94,7 @@
                 <button class="custom-btn btn-3"><span>Know More</span></button>
               </a>
         </div>
-       <div>
+      <div>
           <div class="card customCard">
             <div class="card-body">
               <h5 class="card-title">Notes / Useful Resources</h5>
@@ -106,8 +106,9 @@
               </a>
             </div>
           </div>
-        </div>
       </div>
+      </div>
+
       <div class="filler">
           <div class="side-bar">
             <div class="card customCard" style="width: 18rem">
@@ -118,10 +119,9 @@
                 </p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><b>3th May 2022 </b> <br> Ramzan Eid</li>
-                <li class="list-group-item"><b>16th May 2022 </b> <br>Buddha Purnima</li>
-                <li class="list-group-item"><b>10th July 2022 </b> <br>Bakr Eid</li>
-                <li class="list-group-item"><b>15th August 2022 </b> <br>Independence Day</li>
+                  {% for event in dashboard.all_holiday %}
+                <li class="list-group-item"><b>{{ event.start_time | date:'d/m/Y' }} </b> <br> {{ event.title }}</li>
+                  {% endfor %}
               </ul>
             </div>
           </div>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from News.models import Post, Comment
+from Calendar.models import Event
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from News.forms import PostForm, CommentForm, SubscriptionForm
@@ -17,9 +18,15 @@ class NotesView(TemplateView):
 
 class DashboardView(ListView):
     template_name = 'News/dashboard_new.html'
+    context_object_name = 'dashboard'
 
     def get_queryset(self):
-        return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[0:4]
+
+        return {'all_notice': Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[0:4],
+                'all_important': Event.objects.filter(event_type='important_date', end_time__gte=timezone.now()).order_by('-end_time')[0:4],
+                'all_upcoming': Event.objects.filter(event_type='upcoming_event', end_time__gte=timezone.now()).order_by('-end_time')[0:4],
+                'all_holiday': Event.objects.filter(event_type='holiday', end_time__gte=timezone.now()).order_by('-end_time')[0:4]}
+
 
 class ContactView(TemplateView):
     template_name = 'News/contact.html'
