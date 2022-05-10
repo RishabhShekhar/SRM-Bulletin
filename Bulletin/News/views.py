@@ -15,8 +15,11 @@ from django.views.generic import (TemplateView, ListView,
 class NotesView(TemplateView):
     template_name = 'News/notes.html'
 
-class DashboardView(TemplateView):
+class DashboardView(ListView):
     template_name = 'News/dashboard_new.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[0:4]
 
 class ContactView(TemplateView):
     template_name = 'News/contact.html'
