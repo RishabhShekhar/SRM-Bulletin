@@ -25,5 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include('accounts.urls',namespace="accounts")),
     path('accounts/',include('django.contrib.auth.urls')),
-    path('thanks/',views.ThanksPage.as_view(),name='thanks'),
+    # path('thanks/',views.ThanksPage.as_view(),name='thanks'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
