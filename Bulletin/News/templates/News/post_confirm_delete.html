@@ -1,6 +1,32 @@
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 {% extends "base.html" %}
 {% load static %}
 {% block menu %}
+<style>
+    .customStyles{
+        padding: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .deletePost{
+        font-weight:bolder;
+        font-size: 2rem;
+        font-family: 'Roboto', sans-serif;
+    }
+    .structure{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    h6{
+        font-family: 'Roboto', sans-serif;
+    }
+    .row{
+        justify-content: center;
+    }
+</style>
     <header class="masthead" style="background-image: url('{% static "News/img/contact-bg.jpg" %}');">
     <div class="overlay"></div>
     <div class="container">
@@ -15,9 +41,23 @@
 </header>
 {% endblock %}
 {% block content %}
+<div class="card customStyles">
   <form method="post">
     {% csrf_token %}
-    <p>Are you sure you want to delete {{object}}</p>
-    <input type="submit" class="btn btn-danger" value="Confirm">
+    <div class="structure">
+        <div>
+            <h6>Are you sure you want to delete</h6>
+            <p>
+                <span class="deletePost">{{object}}
+                </span>
+            </p>
+            <input type="submit" class="btn btn-danger" value="Confirm">
+        </div>
+        <div>
+             <img src="{% static "News/img/the-trash-can.gif" %}" width="200rem" style="border-radius:15px;">
+        </div>
+    
+</div>
   </form>
+</div>
 {% endblock %}

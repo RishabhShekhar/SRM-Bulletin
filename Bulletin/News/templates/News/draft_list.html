@@ -1,13 +1,28 @@
 {% extends "base.html" %}
 {% load static %}
 {% block menu %}
-<header class="masthead" style="background-image: url('{% static "News/img/about-bg.jpg" %}');">
+<style>
+    .customStyles{
+      padding: 2rem;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .row{
+            justify-content: center;
+        }
+    .noDraftText{
+        font-weight: 500;
+        line-height: 1.14;
+        font-size: 2rem;
+        text-align: center;
+    }
+    </style>
+<header class="masthead" style="background-image: url('{% static "News/img/draft.png" %}');">
             <div class="overlay"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-lg-8 mx-auto position-relative">
                     <div class="site-heading">
-                        <h1>SRM Bulletin</h1><span class="subheading">For Students By Students</span>
+                        <h1>Draft Your Notices Here</h1><span class="subheading">Right Place for Right Brains</span>
                     </div>
                 </div>
             </div>
@@ -15,6 +30,8 @@
     </header>
 {% endblock %}
 {% block content %}
+
+<div class="card customStyles">
   {% for post in post_list %}
       {% if post.author == user %}
     <div class="post">
@@ -24,6 +41,7 @@
     </div>
       {% endif %}
   {% empty %}
-      <p>No Drafts to publish</p>
+      <p class="noDraftText">No Drafts to publish</p>
   {% endfor %}
+</div>
 {% endblock %}

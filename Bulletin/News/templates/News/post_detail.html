@@ -1,6 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 {% block menu %}
+
+<style>
+.customStyles{
+  padding: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.row{
+        justify-content: center;
+    }
+</style>
+
 <header class="masthead" style="background-image: url('{% static "News/img/about-bg.jpg" %}');">
             <div class="overlay"></div>
         <div class="container">
@@ -14,8 +25,10 @@
         </div>
     </header>
 {% endblock %}
+
 {% block content %}
 
+<div class="customStyles">
   <h1 class="posttitle loader">{{ post.title }}</h1>
   {% if post.published_date %}
     <div class="date postdate">
@@ -67,4 +80,5 @@
       <p>No Comments</p>
     {% endfor %}
   </div>
+</div>
 {% endblock %}

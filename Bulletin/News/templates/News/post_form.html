@@ -1,15 +1,30 @@
+<link rel="stylesheet" href="../../static/css/buttonStyles.css">
 {% extends "base.html" %}
 {% load static %}
 {#{% load bootstrap4 %}#}
 
 {% block menu %}
-<header class="masthead" style="background-image: url('{% static "News/img/about-bg.jpg" %}');">
-            <div class="overlay"></div>
+<style>
+.customStyles{
+    padding: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .row{
+        justify-content: center;
+    }
+
+    .giphy{
+        display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+    }
+</style>
+
+<header class="masthead" style="background-image: url('{% static "News/img/new-post.jpg" %}');">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-lg-8 mx-auto position-relative">
                     <div class="site-heading">
-                        <h1>SRM Bulletin</h1><span class="subheading">For Students By Students</span>
                     </div>
                 </div>
             </div>
@@ -17,13 +32,25 @@
     </header>
 {% endblock %}
 {% block content %}
-  <h1>New Post</h1>
-  <form class="post-form" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-{#      {% bootstrap_form form %}#}
-    {{form.as_p}}
-    <button type="submit" class="btn btn-outline-primary">Save</button>
-  </form>
-
+<div class="card customStyles">
+    <div class="giphy">
+        <div>
+            <h1>New Post</h1>
+            <form class="post-form" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+      <!-- <button type="submit" class="btn btn-outline-primary">Save</button> -->
+       <a href="#" class="frame">
+        <button type="submit" class="custom-btn btn-3"><span>SAVE</span></button>
+      </a>
+        </form>
+        </div>
+        <div>
+            <img src="{% static "News/img/new.gif" %}" width="150rem" style="border-radius:15px;">
+        </div>
+    </div>
+  
+</div>
   <script>var editor = new MediumEditor('.editable');</script>
+
 {% endblock %}
