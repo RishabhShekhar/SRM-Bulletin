@@ -1,140 +1,153 @@
+<link rel="stylesheet" href="../../static/css/buttonStyles.css">
 {% extends "base.html" %}
 {% load static %}
 {% block menu %}
-<header class="masthead" style="background-image: url('{% static "News/img/home-bg.jpg" %}');">
-            <div class="overlay"></div>
+<style>
+    .fixes{
+        flex:none;
+        max-width:unset;
+    }
+    .customStyles{
+        display:flex;
+        flex-direction:row;
+        justify-content: space-between;
+    }
+
+    .newsletter {
+        margin-top: 0;
+        padding: 2rem;
+         background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+     }
+    
+    .newsletter .content {
+         max-width: 650px;
+         margin: 0 auto;
+         text-align: center;
+         position: relative;
+         z-index: 2
+     }
+    
+    .content-tuned {
+         font-size: 0.8rem;
+         margin-bottom: 34px !important;
+         color: rgb(0, 0, 0)
+     }
+    
+    h2 {
+         color: rgb(0, 0, 0);
+         margin-bottom: 6px
+     }
+    
+    .form-control {
+         height: 50px;
+         border-color: #ffffff;
+         border-radius: 2px 0px 0px 2px
+     }
+    
+    .form-control:focus {
+         box-shadow: none !important;
+         border: 2px solid #243c4f;
+         border-color: none
+     }
+    
+    .btn {
+         min-height: 50px;
+         border-radius: 0;
+         background: #243c4f;
+         color: rgb(255, 255, 255);
+         font-weight: 300
+     }
+    
+    .btn:hover {
+         background: red;
+         color: #fff
+     }
+    
+    .form-control:focus {
+         color: #495057;
+         background-color: #fff;
+         border-color: #80bdff;
+         outline: 0;
+         box-shadow: 0 0 0 0rem rgba(0, 123, 255, .25) !important
+     }
+    
+    .unsubscribe-link {
+         text-decoration: none !important;
+         font-size: 13px;
+         color: rgb(0, 0, 0)
+     }
+    
+    .unsubscribe-link:hover {
+         text-decoration: none !important;
+         color: rgb(0, 0, 0)
+     }
+
+     .postClass{
+         min-width: 100%;
+         margin-right: 10rem;
+         padding: 2rem;
+         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+     }
+        </style>
+
+<header class="masthead" style="background-image: url('{% static "News/img/postlist.jpeg" %}');">
+        <div class="overlay"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-10 col-lg-8 mx-auto position-relative">
+                <div class="col-md-10 col-lg-8 mx-auto " >
                     <div class="site-heading">
                         <h1>SRM Bulletin</h1><span class="subheading">For Students By Students</span>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+</header>
+            
 {% endblock %}
 
 {% block content %}
-{#<div class="centerstage">#}
-{#  <h1>Home</h1>#}
-{#  {% for post in post_list %}#}
-{#   <div class="card mt-4 mr-6 test">#}
-{#    <h5 class="card-header load">#}
-{#      <a class="main-title" href="{% url 'post_detail' pk=post.pk %}" style="color #3d3d95;">{{ post.title }}</a>#}
-{#      <p class="author">Author: {{ post.author }}</p>#}
-{#    </h5>#}
-{#    <div class="card-body">#}
-{#      <h6 style="font-weight: 300;  margin-bottom: 1.5em; font-size: 1.35em;" class="card-title">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</h6>#}
-{#      <p  class="card-text">#}
-{#        <p style="margin-bottom:-1px ; font-weight: lighter;">Published on: {{ post.published_date|date:"d M Y" }}</p>#}
-{#        <p  style="font-weight: lighter;">Comments: {{post.approve_comments.count}}</p>#}
-{#      </p>#}
-{#      <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary backCo">Read More</a>#}
-{#    </div>#}
-{#  </div>#}
-{#  {% endfor %}#}
-{#</div>#}
-    {% for post in post_list %}
-    <div class="post-preview"><a href="{% url 'post_detail' pk=post.pk %}">
+   
+<div class="card customStyles">
+    <div class="postClass">
+        {% for post in post_list %}
+       <div class="post-preview"><a href="{% url 'post_detail' pk=post.pk %}">
                         <h2 class="post-title"> {{ post.title }}</h2>
                         <p class="post-subtitle">{{ post.text|safe|linebreaksbr|truncatechars:"100" }}</p>
                     </a>
                     <p class="post-meta">Posted by&nbsp;{{ post.author }} on {{ post.published_date|date:"d M Y" }}</p>
                      <p class="post-meta">Comments: {{post.approve_comments.count}}</p>
-{#    <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary backCo">Read More</a>#}
                 </div>
                 <hr />
      {% endfor %}
-    <div class="clearfix"><button class="btn btn-primary float-end" type="button">Older Posts ⇒</button></div>
+      <div class="clearfix">
+        <!-- <button class="btn btn-primary float-end" type="button">Older Posts ⇒</button> -->
+        <a href="#" class="frame">
+            <button type="button" class="custom-btn btn-3"><span>Older Posts</span></button>
+          </a>
+      </div>
+    </div>
 
-
-
-
-
-    <style>
-.newsletter {
-     padding: 80px 0;
-     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
- }
-
-.newsletter .content {
-     max-width: 650px;
-     margin: 0 auto;
-     text-align: center;
-     position: relative;
-     z-index: 2
- }
-
-.content-tuned {
-     font-size: 0.8rem;
-     margin-bottom: 34px !important;
-     color: rgb(0, 0, 0)
- }
-
-h2 {
-     color: rgb(0, 0, 0);
-     margin-bottom: 6px
- }
-
-.form-control {
-     height: 50px;
-     border-color: #ffffff;
-     border-radius: 2px 0px 0px 2px
- }
-
-.form-control:focus {
-     box-shadow: none !important;
-     border: 2px solid #243c4f;
-     border-color: none
- }
-
-.btn {
-     min-height: 50px;
-     border-radius: 0;
-     background: #243c4f;
-     color: rgb(255, 255, 255);
-     font-weight: 300
- }
-
-.btn:hover {
-     background: red;
-     color: #fff
- }
-
-.form-control:focus {
-     color: #495057;
-     background-color: #fff;
-     border-color: #80bdff;
-     outline: 0;
-     box-shadow: 0 0 0 0rem rgba(0, 123, 255, .25) !important
- }
-
-.unsubscribe-link {
-     text-decoration: none !important;
-     font-size: 13px;
-     color: rgb(0, 0, 0)
- }
-
-.unsubscribe-link:hover {
-     text-decoration: none !important;
-     color: rgb(0, 0, 0)
- }
-    </style>
-
-
-    <div class="newsletter" style="margin-top:5rem ; width: 100%;">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="content">
-                        <h2>SUBSCRIBE NOW</h2>
-                        <h6 class="content-tuned">Subscribe to our newsletter and stay tuned with future updates</h6>
-                        <div class="input-group"> <input type="email" class="form-control" placeholder="Enter email to subscribe"> <span class="input-group-btn"> <button class="btn" type="submit">Subscribe Now</button> </div>
-                        <div class="text-center"> <a class="unsubscribe-link" href="#">Would you like to unsubscribe?</a> </div>
-                    </div>
+<div class="newsletter" style="width: 100%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="content">
+                    <h2>SUBSCRIBE NOW</h2>
+                    <h6 class="content-tuned">Subscribe to our newsletter and stay tuned with future updates</h6>
+                    <div>
+                         <a href="#" class="frame">
+                            <button type="submit" class="custom-btn btn-3"><span>Subscribe Now</span></button>
+                            <br>
+                        </a>
+                        
+                        </div>
+                    <div class="text-center"> <br><a class="unsubscribe-link" href="#">Would you like to unsubscribe?</a> </div>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+</div>
+</div>
+
+    
 {% endblock %}
