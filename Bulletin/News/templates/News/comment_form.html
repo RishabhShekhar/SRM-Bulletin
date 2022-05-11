@@ -4,6 +4,15 @@
 
 
 {% block menu %}
+    <style>
+    .customStyles{
+        padding: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .row{
+        justify-content: center;
+    }
+    </style>
     <header class="masthead" style="background-image: url('{% static "News/img/contact-bg.jpg" %}');">
     <div class="overlay"></div>
     <div class="container">
@@ -18,13 +27,16 @@
 </header>
 {% endblock %}
 {% block content %}
-  <h1>New Comment</h1>
-    <p>Author: {{user}}</p>
+    <div class="card customStyles">
+  <h1 style="text-align: center">New Comment</h1>
+        <br>
+    <p><span style="font-weight: bold; font-size: 1rem;">Author:</span> {{user}}</p>
   <form class="post-form" method="post">
     {% csrf_token %}
       {% bootstrap_form form %}
 {#    {{form.as_p}}#}
     <button type="submit" class="btn btn-outline-primary">Post Comment</button>
   </form>
+    </div>
   <script>var editor= new MediumEditor('.editable')</script>
 {% endblock %}
