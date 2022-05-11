@@ -2,7 +2,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">  </body>
+<html lang="en">
 
 {% block welcome %}
       <head>
@@ -24,7 +24,7 @@
   </head>
 
   <style>
-   
+
 .parent {
   width: 100%;
   height: 8vh;
@@ -40,12 +40,6 @@
 .customContainer{
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
-
-.upcomingEvents{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
   </style>
 
   <div class="parent">
@@ -57,129 +51,77 @@
           <div class="col-sm-6">
             <div class="card customCard">
               <div class="card-body">
-                <div class="upcomingEvents">
-                  <div>
-                    <h5 class="card-title">Important Dates</h5>
-                    <p class="card-text">
-                      <li><b>8th May 2022 -</b> Internal Assessment III</li>
-                      <li><b>11th May 2022 -</b> University Practical</li>
-                    </p>
-                    <a href="{% url 'Calendar:cal' %}" class="frame">
-                      <button class="custom-btn btn-3"><span>Know More</span></button>
-                    </a></div>
-                  <div>
-                    <img src="{% static "News/img/impDates.gif" %}" width="100rem" style="border-radius:15px; margin-top: 1rem;">
-                  </div>
-                </div>
-                
+                <h5 class="card-title">Important Dates</h5>
+                <p class="card-text">
+                  {% for event in dashboard.all_important %}
+                  <li><b>{{ event.start_time | date:'d/m/Y' }} - </b>{{ event.title }}</li>
+                  {% endfor %}
+                </p>
+                <a href="{% url 'Calendar:cal' %}" class="frame">
+                  <button class="custom-btn btn-3"><span>Know More</span></button>
+                </a>
               </div>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="card customCard">
-              <div class="card-body ">
-                <div class="upcomingEvents">
-                <div>
-                  <h5 class="card-title">Upcoming Events</h5>
-                  <p class="card-text">
-                    <ul>
-                    <li><b>2nd May 2022 -</b> Innovate</li>
-                    <li><b>17th May 2022 -</b> Alumni Talk</li>
-                    </ul>
-                  </p>
-                  <a href="{% url 'Calendar:cal' %}" class="frame">
-                    <button class="custom-btn btn-3"><span>Know More</span></button>
-                  </a>
-                </div>
-                <div>
-                  <img src="{% static "News/img/upcoming.gif" %}" width="100rem" style="border-radius:15px; margin-top: 1rem;">
-                </div>
-              </div>
+              <div class="card-body">
+                <h5 class="card-title">Upcoming Events</h5>
+                <p class="card-text">
+                 {% for event in dashboard.all_upcoming %}
+                  <li><b>{{ event.start_time | date:'d/m/Y' }} - </b>{{ event.title }}</li>
+                  {% endfor %}
+                </p>
+                <a href="{% url 'Calendar:cal' %}" class="frame">
+                  <button class="custom-btn btn-3"><span>Know More</span></button>
+                </a>
               </div>
             </div>
           </div>
         </div>
         <div class="flex-column bulletin card customContainer">
-          <div class="upcomingEvents">
-            <div>
-              <h1 class="card-title" style="text-align: center; margin-top:2rem;">Notices</h1>
-            </div>
-            <div>
-              <img src="{% static "News/img/bulletin.png" %}" width="100rem" style="border-radius:15px; margin-top: 1rem;">
-            </div>
-          </div>
-          <div class="card customCard">
-            <h6 class="card-header">Online Counseling - Information & Guidelines for Candidates</h6>
+            {% for post in dashboard.all_notice %}
+                <div class="card customCard">
+            <h6 class="card-header">{{ post.title }}</h6>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
-                <p>Greetings from SRM, Thank you for your interest in SRM. We are glad to inform that SRMJEEE – 2022 – Phase II counseling will be conducted in online mode.</p>
+                <p>{{ post.text|safe|linebreaksbr|truncatechars:"250" }}</p>
               </blockquote>
             </div>
           </div>
-          <div class="card customCard">
-            <h6 class="card-header">STRAY VACANCY COUNSELLING SRM MEDICAL COLLEGE HOSPITAL & RESEARCH CENTRE</h6>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>AAs there was delay in publication of the Eligible candidate list for Deemed University by MCC , the  scheduled counselling will be conducted at 4 PM on 06.04.2022.</p>
-              </blockquote>
-            </div>
-          </div>
-          <div class="card customCard">
-            <h6 class="card-header">STANDARD OPERATING PROCEDURE FOR PHYSICAL REOPENING OF UNIVERSITY STUDENTS</h6>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>COVID 19 has ushered in an era where we have to follow a 'new normal'. As an institution we are gearing up to get back to routines and there are guidelines that need to be followed on various fronts.</p>
-              </blockquote>
-            </div>
-          </div>
-          <div class="card customCard">
-            <h6 class="card-header">SOP FOR PHYSICAL REOPENING OF UNIVERSITY FOR TEACHERS, ADMINISTRATIVE STAFF & OTHERS</h6>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>Wearing mask is mandatory for every individual including the Administrative staff, teaching faculty and other stakeholders inside the campus.</p>
-              </blockquote>
-            </div>
-          </div>
+            {% endfor %}
             <a href="#" class="frame">
                 <button class="custom-btn btn-3"><span>Know More</span></button>
               </a>
         </div>
-        <div>
+      <div>
           <div class="card customCard">
             <div class="card-body">
-              <div class="upcomingEvents">
-                <div>
-                  <h5 class="card-title">Notes / Useful Resources</h5>
+              <h5 class="card-title">Notes / Useful Resources</h5>
               <p class="card-text">
                 Notes and useful resources to help students to cope up in academics and provide a helping hand in studies.
               </p>
               <a href="#" class="frame">
                 <button class="custom-btn btn-3"><span>Know More</span></button>
               </a>
-                </div>
-                <div>
-                  <img src="{% static "News/img/impNotes.gif" %}" width="150rem" style="border-radius:15px; margin-top: 1rem;">
-                </div>
-              </div>
-              
             </div>
           </div>
-        </div>
       </div>
+      </div>
+
       <div class="filler">
           <div class="side-bar">
             <div class="card customCard" style="width: 18rem">
               <div class="card-body">
                 <h5 class="card-title">Holidays</h5>
                 <p class="card-text">
-                    Time to raise startups while having fun!
+                    A well-known quote, contained in a blockquote element.
                 </p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><b>3th May 2022 </b> <br> Ramzan Eid</li>
-                <li class="list-group-item"><b>16th May 2022 </b> <br>Buddha Purnima</li>
-                <li class="list-group-item"><b>10th July 2022 </b> <br>Bakr Eid</li>
-                <li class="list-group-item"><b>15th August 2022 </b> <br>Independence Day</li>
+                  {% for event in dashboard.all_holiday %}
+                <li class="list-group-item"><b>{{ event.start_time | date:'d/m/Y' }} </b> <br> {{ event.title }}</li>
+                  {% endfor %}
               </ul>
             </div>
           </div>
@@ -189,7 +131,7 @@
               <div class="card-body">
                 <h5 class="card-title">Faculty List</h5>
                 <p class="card-text">
-                  Faculties joined with us in our website.
+                  Faculties joined with us in our website
                 </p>
               </div>
               <ul class="list-group list-group-flush">
