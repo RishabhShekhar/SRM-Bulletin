@@ -237,9 +237,13 @@
           <a href="#">SRM<span>&nbsp;Bulletin </span></a>
         </h3>
         <p class="links">
-          <a href="#">Notices</a><strong> · </strong><a href="#">Resources</a
-          ><strong> · </strong><a href="#">Student Login</a><strong> · </strong
-          ><a href="#">SignUp</a>
+          <a href="{% url 'post_list' %}">Notices</a><strong> · </strong
+          ><a href="#">Calendar</a><strong> · </strong
+          ><a href="#">Student Login</a>
+        </p>
+        <p class="links">
+          <a href="{% url 'accounts:signup' %}">Sign Up</a><strong> · </strong
+          ><a href="{% url 'subscription' %}">Subscription</a>
         </p>
         <p class="company-name">SRM Bulletin © 2022</p>
       </div>
@@ -256,7 +260,7 @@
         </div>
         <div>
           <i class="fa fa-envelope footer-contacts-icon"></i>
-          <p><a href="#" target="_blank">support@srmBulletin.com</a></p>
+          <p><a href="#" target="_blank">bullitinsrm@gmail.com</a></p>
         </div>
       </div>
       <div class="col-md-4 footer-about">
@@ -265,7 +269,8 @@
           We are a small team of developers trying to give back to the community
           in the best way possible.
         </p>
-        <h6>Striving to make a difference each day</h6>
+        <br />
+        <h6>Striving to make a difference each day!</h6>
         <div class="social-links social-icons">
           <a href="#"><i class="fa fa-facebook"></i></a
           ><a href="#"><i class="fa fa-twitter"></i></a
