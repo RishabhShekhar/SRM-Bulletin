@@ -207,8 +207,8 @@
         </h3>
         <p class="links">
           <a href="{% url 'post_list' %}">Notices</a><strong> · </strong
-          ><a href="#">Calendar</a><strong> · </strong
-          ><a href="#">Student Login</a>
+          ><a href="{% url 'Calendar:cal' %}">Calendar</a><strong> · </strong
+          ><a href="https://www.srmist.edu.in/campus_connect/spectrum">Magazine</a>
         </p>
         <p class="links">
           <a href="{% url 'accounts:signup' %}">Sign Up</a><strong> · </strong
@@ -224,12 +224,12 @@
         <div>
           <i class="fa fa-phone footer-contacts-icon"></i>
           <p class="footer-center-info email text-start">
-            Contact Us +916304807158
+               Contact Us <a href="callto:916304807158"> +916304807158</a>
           </p>
         </div>
         <div>
           <i class="fa fa-envelope footer-contacts-icon"></i>
-          <p><a href="#" target="_blank">bullitinsrm@gmail.com</a></p>
+          <p><a href="mailto:bullitinsrm@gmail.com">bullitinsrm@gmail.com</a></p>
         </div>
       </div>
       <div class="col-md-4 footer-about">
@@ -244,7 +244,7 @@
           <a href="#"><i class="fa fa-facebook"></i></a
           ><a href="#"><i class="fa fa-twitter"></i></a
           ><a href="#"><i class="fa fa-linkedin"></i></a
-          ><a href="#"><i class="fa fa-github"></i></a>
+          ><a href="https://github.com/RishabhShekhar/SRM-Bulletin"><i class="fa fa-github"></i></a>
         </div>
       </div>
     </div>
