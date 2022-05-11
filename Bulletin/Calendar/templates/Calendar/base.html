@@ -101,7 +101,6 @@
       type="text/css"
       href="{% static 'Calendar/css/styles.css' %}"
     />
-    <title>SRM Planner</title>
   </head>
   <body>
     <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
@@ -208,8 +207,6 @@
         </div>
       </div>
     </nav>
-
-    <h1 class="title">{% block title %}{% endblock %}</h1>
 
     {% block content %} {% endblock %}
 
