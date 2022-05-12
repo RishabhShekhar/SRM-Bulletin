@@ -2,13 +2,24 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block menu %}
+    <style>
+    .customStyles{
+        padding: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .row{
+        justify-content: center;
+    }
+
+    </style>
     <header class="masthead" style="background-image: url('{% static "News/img/contact-bg.jpg" %}');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-lg-8 mx-auto position-relative">
                 <div class="site-heading">
-                    <h1>About Me</h1><span class="subheading">This is what I do</span>
+                    <h1>Subscribe Now</h1><span class="subheading">Most useful subscription you would subscribe to </span>
                 </div>
             </div>
         </div>
@@ -16,12 +27,13 @@
 </header>
 {% endblock %}
 {% block content %}
-<h1>Subscription</h1>
-<p>Thanks for Subscribing Us!!</p>
+    <div class=" card customStyles">
+<h1 style="text-align: center">Subscription</h1>
     <form class="post-form" method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
     <button type="submit" class="btn btn-outline-primary">Post Comment</button>
   </form>
+        </div>
   <script>var editor= new MediumEditor('.editable')</script>
 {% endblock %}
