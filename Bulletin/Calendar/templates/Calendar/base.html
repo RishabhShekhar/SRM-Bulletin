@@ -101,6 +101,14 @@
       type="text/css"
       href="{% static 'Calendar/css/styles.css' %}"
     />
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+
+
   </head>
   <body>
     <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
@@ -143,6 +151,10 @@
                   target="_blank"
                   >Calculator</a
                 >
+                  <a
+                class="dropdown-item"
+                href="https://www.srmist.edu.in/campus_connect/spectrum"
+                target="_blank">Magazine</a>
               </div>
             </li>
            {% if not user.is_authenticated %}
@@ -160,23 +172,22 @@
                 <a
                   class="dropdown-item"
                   href="https://evarsity.srmist.edu.in/srmsip/"
+                  target="_blank"
                   >ERP Login</a
                 >
                 <a
                   class="dropdown-item"
                   href="https://app.joinsuperset.com/#/s/feed"
+                  target="_blank"
                   >Superset Login</a
                 >
               </div>
             </li>
             {% endif %}
-            <li class="nav-item">
+           <li class="nav-item">
               <a
                 class="nav-link"
-                href="https://www.srmist.edu.in/campus_connect/spectrum"
-                target="_blank"
-                >Magazine</a
-              >
+                href="{% url 'dashboard' %}">Dashboard</a>
             </li>
           </ul>
           <ul class="navbar-nav navbar-right">
@@ -238,8 +249,8 @@
         </h3>
         <p class="links">
           <a href="{% url 'post_list' %}">Notices</a><strong> · </strong
-          ><a href="#">Calendar</a><strong> · </strong
-          ><a href="#">Student Login</a>
+          ><a href="{% url 'Calendar:cal' %}">Calendar</a><strong> · </strong
+          ><a href="https://www.srmist.edu.in/campus_connect/spectrum">Magazine</a>
         </p>
         <p class="links">
           <a href="{% url 'accounts:signup' %}">Sign Up</a><strong> · </strong
@@ -255,12 +266,12 @@
         <div>
           <i class="fa fa-phone footer-contacts-icon"></i>
           <p class="footer-center-info email text-start">
-            Contact Us +916304807158
+               Contact Us <a href="callto:916304807158"> +916304807158</a>
           </p>
         </div>
         <div>
           <i class="fa fa-envelope footer-contacts-icon"></i>
-          <p><a href="#" target="_blank">bullitinsrm@gmail.com</a></p>
+          <p><a href="mailto:bullitinsrm@gmail.com">bullitinsrm@gmail.com</a></p>
         </div>
       </div>
       <div class="col-md-4 footer-about">
@@ -272,12 +283,13 @@
         <br />
         <h6>Striving to make a difference each day!</h6>
         <div class="social-links social-icons">
-          <a href="#"><i class="fa fa-facebook"></i></a
-          ><a href="#"><i class="fa fa-twitter"></i></a
-          ><a href="#"><i class="fa fa-linkedin"></i></a
-          ><a href="#"><i class="fa fa-github"></i></a>
+          <a href="https://www.facebook.com/", target="_blank"><i class="fa fa-facebook"></i></a
+          ><a href="https://twitter.com/", target="_blank"><i class="fa fa-twitter"></i></a
+          ><a href="https://www.linkedin.com/", target="_blank"><i class="fa fa-linkedin"></i></a
+          ><a href="https://github.com/RishabhShekhar/SRM-Bulletin", target="_blank"><i class="fa fa-github"></i></a>
         </div>
       </div>
     </div>
   </footer>
+
 </html>
