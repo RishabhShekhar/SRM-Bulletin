@@ -30,6 +30,7 @@
 
 <div class="customStyles">
   <h1 class="posttitle loader">{{ post.title }}</h1>
+<br>
   {% if post.published_date %}
     <div class="date postdate">
       {{ post.published_date }}
@@ -44,7 +45,7 @@
         <a href="{{ post.docfile.url }}" target="_blank">{{ post.docfile.name }}</a></li>
     {% endif %}
     </p>
-    <p>Author : {{ post.author|safe|linebreaksbr  }}</p>
+    <p><span style="font-weight: bold; font-size: 1rem;">Author :</span> {{ post.author|safe|linebreaksbr  }}</p>
 
   {% if user.is_authenticated and user == post.author %}
   <a class='btn btn-primary' href="{% url 'post_edit' pk=post.pk %}">
@@ -77,7 +78,8 @@
 
       {% endif %}
       {% empty %}
-      <p>No Comments</p>
+        <br>
+      <p style="text-align: left; font-weight: bold">No Comments</p>
     {% endfor %}
   </div>
 </div>

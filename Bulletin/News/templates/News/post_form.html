@@ -35,7 +35,8 @@
 <div class="card customStyles">
     <div class="giphy">
         <div>
-            <h1>New Post</h1>
+            <h1 style="text-align: center">New Post</h1>
+            <br>
             <form class="post-form" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{form.as_p}}
